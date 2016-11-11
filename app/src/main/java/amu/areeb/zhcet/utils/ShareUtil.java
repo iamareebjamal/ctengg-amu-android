@@ -10,14 +10,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ShareUtil {
-    private File ss;
     private Context context;
     private RecyclerView rv;
     private String name;
@@ -33,27 +35,34 @@ public class ShareUtil {
     }
 
     public void sendBitmap(Bitmap b) {
-        ss = new File(context.getFilesDir(), "attendance.png");
-        ss.setReadable(true, false);
         try {
-            FileOutputStream fOut = new FileOutputStream(ss);
-            b.compress(Bitmap.CompressFormat.PNG, 50, fOut);
-            fOut.flush();
-            fOut.close();
-        } catch (Exception e) {
+            File cachePath = new File(context.getCacheDir(), "images");
+            cachePath.mkdirs();
+            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png");
+            b.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            stream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public void createChooser() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(ss));
-        intent.setType("image/png");
-        try {
-            context.startActivity((Intent.createChooser(intent, "Share Attendance")));
-        } catch (ActivityNotFoundException e) {
+        File imagePath = new File(context.getCacheDir(), "images");
+        File newFile = new File(imagePath, "image.png");
+        Uri contentUri = FileProvider.getUriForFile(context, "amu.areeb.zhcet.fileprovider", newFile);
 
+        if (contentUri != null) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntent.setDataAndType(contentUri, context.getContentResolver().getType(contentUri));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            context.startActivity(Intent.createChooser(shareIntent, "Share..."));
         }
+
     }
 
     public Bitmap getRecyclerViewScreenshot(RecyclerView view) {
