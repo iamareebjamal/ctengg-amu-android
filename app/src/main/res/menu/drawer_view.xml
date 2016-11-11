@@ -22,9 +22,9 @@
 		android:icon="@drawable/ic_dashboard"
 		android:title="Home" /-->
         <item
-            android:id="@+id/nav_attendance"
-            android:icon="@drawable/ic_event"
-            android:title="Attendance" />
+                android:id="@+id/nav_attendance"
+                android:icon="@drawable/ic_event"
+                android:title="Attendance"/>
         <!--item
 		android:id="@+id/nav_friends"
 		android:icon="@drawable/ic_headset"
@@ -35,22 +35,22 @@
 		android:title="Discussion" /-->
     </group>
 
-	<item android:title="Developer" >
-		<menu>
-			<group android:checkableBehavior="none">
-				<item
-					android:id="@+id/nav_feedback"
-					android:icon="@drawable/ic_forum"
-					android:title="Feedback" />
-				<item
-					android:id="@+id/nav_app"
-					android:icon="@drawable/ic_android_black_48dp"
-					android:title="App" />
-				<item
-					android:id="@+id/nav_about"
-					android:icon="@drawable/ic_group_black_48dp"
-					android:title="About" />
-			</group>
+    <item android:title="Developer">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                        android:id="@+id/nav_feedback"
+                        android:icon="@drawable/ic_forum"
+                        android:title="Feedback"/>
+                <item
+                        android:id="@+id/nav_app"
+                        android:icon="@drawable/ic_android_black_48dp"
+                        android:title="App"/>
+                <item
+                        android:id="@+id/nav_about"
+                        android:icon="@drawable/ic_group_black_48dp"
+                        android:title="About"/>
+            </group>
         </menu>
     </item>
 

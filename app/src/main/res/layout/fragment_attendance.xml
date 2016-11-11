@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_content"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:id="@+id/main_content"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent">
 
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/recycler"
-		android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-		
-	<LinearLayout 
-	    android:id="@+id/empty"
-	    android:layout_height="match_parent"
-	    android:layout_width="match_parent"
-	    android:orientation="vertical"
-	    android:gravity="center"
-	    android:layout_gravity="center">
-	    
-	    <ImageView
-	        android:id="@+id/bin"
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:src="@drawable/empty"
-	        android:padding="10dp"
-	        />
-	    
-	    <TextView 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="10dp"
-	        android:text="Nothing to show here!"
-	        android:textSize="22sp"
-	        android:textStyle="italic"
-	        android:textColor="#999999"/>
-	</LinearLayout>
-	
-	<android.support.design.widget.FloatingActionButton
-		android:id="@+id/fab"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_anchor="@id/recycler"
-        app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_add"
-        android:layout_margin="@dimen/fab_margin"
-		app:borderWidth="0dp"
-		app:elevation="5dp"
-		app:layout_behavior="amu.areeb.zhcet.utils.FABBehaviour"
-        android:clickable="true"/>
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    <LinearLayout
+            android:id="@+id/empty"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+        <ImageView
+                android:id="@+id/bin"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/empty"
+                android:padding="10dp"
+        />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nothing to show here!"
+                android:textSize="22sp"
+                android:textStyle="italic"
+                android:textColor="#999999"/>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_anchor="@id/recycler"
+            app:layout_anchorGravity="bottom|right|end"
+            android:src="@drawable/ic_add"
+            android:layout_margin="@dimen/fab_margin"
+            app:borderWidth="0dp"
+            app:elevation="5dp"
+            app:layout_behavior="amu.areeb.zhcet.utils.FABBehaviour"
+            android:clickable="true"/>
 
 </android.support.design.widget.CoordinatorLayout>
 

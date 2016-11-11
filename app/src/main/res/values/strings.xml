@@ -4,20 +4,21 @@
     <string name="app_name">ctengg AMU</string>
     <string name="hello_world">Hello world!</string>
     <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
-    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
-    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
-    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
-    the big cheese.</string>
+        cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
+        bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
+        cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
+        the big cheese.
+    </string>
     <string name="app_ver">.9beta1</string>
     <string name="app_about_detail">
         ctengg android application is the wrapper application of ctengg.amu.ac.in
         which provides easy access to attendance (more features to be available in future) to students enrolled
         in B.Tech programme of Zakir Hussain College of Engineering and Technology, AMU.\n
-        		This app provides seamless interaction without web interface for fetching the attendance of students 
+        This app provides seamless interaction without web interface for fetching the attendance of students
         quickly and displays up to date attendance (in accordance to the website) in the form of elegant cards
         of Material design guidelines for Android given by Google.\n\n
-        The app is in phase of constant development and frequent updates will be rolled out incorporating new 
-        features and bug fixes. A feedback option is provided to send any query, criticism or bug report to the 
+        The app is in phase of constant development and frequent updates will be rolled out incorporating new
+        features and bug fixes. A feedback option is provided to send any query, criticism or bug report to the
         developer. Any kind of constructive criticism and suggestion is appreciated and welcome.
     </string>
     <string name="app_library_detail">
@@ -31,24 +32,35 @@
         \u2022 Code resources from Chris Bane\'s demo CheeseSquare
     </string>
     <string name="app_credit_detail">
-		\u2022 This app is developed by Areeb Jamal, and Divy Prakash Varshney, two students of 2nd Year B.Tech, ZHCET, AMU \n
-		\u2022 App fetches information from web server of ctengg.amu.ac.in \n
-		\u2022 Any image/resource used in the app is provided free for use by Google under Material Design Program of Polymer
-		project with exceptions of resources listed below \n
-		\u2022 The stylized version of AMU logo consistent with Material Design guideline by Areeb Jamal \n
-		\u2022 App icon created by Aniruddh Chandrate
-	</string>
-	<string name="areeb_about_detail">
-        Areeb Jamal is an Android and software enthusiast currenty pursuing his B.Tech degree in Computer Engineering from ZHCET, 
-        AMU. He started his experiences in software by reading about tweaking of Windows applications and then moved forward to Linux
-        \n\nIn July 2012, his uncle gifted him Galaxy Ace-I GT-S5830i and though being grateful to him, its lack of resources 
-        compelled him to join XDA on 7th August 2012, 
-        which was when he started exploring the knowledge on XDA.\n\nHe started creating themes at first, and then with help of 
-        some very gracious friends on XDA, started to learn more miscellaneous things such as bash, batch scripting, etc. He, 
-        from the beginning of 2013 started learning about app development and till mid 2014, he has released couple of apps and 
-        Xposed Modules.\n\nHe always shared his knowledge with others and was always more than eager to help people. After all, 
-        that\'s the motive of XDA, spreading the knowledge. His biggest contributions are, according to him, the guides, because 
-        teaching a man how to fish is always better that giving him a fish.\nHe currently is Recognised Contributor and Recognised 
+        \u2022 This app is developed by Areeb Jamal, and Divy Prakash Varshney, two students of 2nd Year B.Tech, ZHCET,
+        AMU \n
+        \u2022 App fetches information from web server of ctengg.amu.ac.in \n
+        \u2022 Any image/resource used in the app is provided free for use by Google under Material Design Program of
+        Polymer
+        project with exceptions of resources listed below \n
+        \u2022 The stylized version of AMU logo consistent with Material Design guideline by Areeb Jamal \n
+        \u2022 App icon created by Aniruddh Chandrate
+    </string>
+    <string name="areeb_about_detail">
+        Areeb Jamal is an Android and software enthusiast currenty pursuing his B.Tech degree in Computer Engineering
+        from ZHCET,
+        AMU. He started his experiences in software by reading about tweaking of Windows applications and then moved
+        forward to Linux
+        \n\nIn July 2012, his uncle gifted him Galaxy Ace-I GT-S5830i and though being grateful to him, its lack of
+        resources
+        compelled him to join XDA on 7th August 2012,
+        which was when he started exploring the knowledge on XDA.\n\nHe started creating themes at first, and then with
+        help of
+        some very gracious friends on XDA, started to learn more miscellaneous things such as bash, batch scripting,
+        etc. He,
+        from the beginning of 2013 started learning about app development and till mid 2014, he has released couple of
+        apps and
+        Xposed Modules.\n\nHe always shared his knowledge with others and was always more than eager to help people.
+        After all,
+        that\'s the motive of XDA, spreading the knowledge. His biggest contributions are, according to him, the guides,
+        because
+        teaching a man how to fish is always better that giving him a fish.\nHe currently is Recognised Contributor and
+        Recognised
         Themer on XDA, and hopes to live up to those titles and prepares for gaining the third.
     </string>
     <string name="areeb_dev_detail">
@@ -57,6 +69,7 @@
         \u2022 <a href="https://goo.gl/5uvCcr">Circulus Icon Pack</a> \n
         \u2022 <a href="http://goo.gl/E2pnr5">Eggster</a> \n
         \u2022 <a href="http://goo.gl/QtHxcj">X-Battery Stats Colors</a> \n
-        \u2022 <a href="https://goo.gl/2QgCdZ">Blank Icon Pack Template Source</a>
+        \u2022
+        <a href="https://goo.gl/2QgCdZ">Blank Icon Pack Template Source</a>
     </string>
 </resources>
