@@ -1,6 +1,7 @@
-package amu.areeb.zhcet;
+package amu.areeb.zhcet.ui;
 
-import amu.areeb.zhcet.attendance.*;
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
 import android.animation.*;
 import android.annotation.*;
 import android.content.*;

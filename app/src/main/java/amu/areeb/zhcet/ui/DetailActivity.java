@@ -1,5 +1,6 @@
-package amu.areeb.zhcet;
+package amu.areeb.zhcet.ui;
 
+import amu.areeb.zhcet.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;

@@ -2,6 +2,7 @@ package amu.areeb.zhcet.attendance;
 
 import java.util.List;
 
+import amu.areeb.zhcet.model.Attendance;
 import android.util.Log;
 import org.jsoup.nodes.Document;
 import org.jsoup.Jsoup;

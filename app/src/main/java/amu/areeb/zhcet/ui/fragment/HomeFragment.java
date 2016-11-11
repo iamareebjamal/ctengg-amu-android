@@ -1,4 +1,5 @@
-package amu.areeb.zhcet;
+package amu.areeb.zhcet.ui.fragment;
+import amu.areeb.zhcet.R;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;

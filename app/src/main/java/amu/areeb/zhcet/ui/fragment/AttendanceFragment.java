@@ -1,4 +1,4 @@
-package amu.areeb.zhcet.attendance;
+package amu.areeb.zhcet.ui.fragment;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,8 +9,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
-import amu.areeb.zhcet.MainActivity;
+
+import amu.areeb.zhcet.attendance.AttendanceAdapter;
+import amu.areeb.zhcet.attendance.AttendanceGetter;
+import amu.areeb.zhcet.ui.MainActivity;
 import amu.areeb.zhcet.R;
 import amu.areeb.zhcet.utils.Utils;
 import android.annotation.SuppressLint;
@@ -34,7 +36,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputFilter;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,15 +45,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.graphics.*;
-import android.view.View.*;
 import android.view.*;
 import java.io.*;
-import android.widget.*;
+import java.util.List;
+
 import android.content.*;
 import android.net.*;
-import android.graphics.drawable.*;
-import android.support.v7.app.*;
 import android.animation.*;
+import amu.areeb.zhcet.model.Attendance;
 import amu.areeb.zhcet.utils.*;
 
 public class AttendanceFragment extends Fragment
@@ -124,7 +124,8 @@ public class AttendanceFragment extends Fragment
         //inflater.inflate(R.menu.attendance, menu);
 		MenuItem share = menu.add("Share");
 		share.setIcon(R.drawable.ic_share);
-		share.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+		if(Build.VERSION.SDK_INT >= 11)
+			share.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 		share.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
 
 				@Override
@@ -285,6 +286,8 @@ public class AttendanceFragment extends Fragment
 	}
 	
 	Random rnd = new Random(Attendance.COLORS.length);
+
+	@SuppressLint("NewApi")
 	private void entry(final List<Attendance> att){
 		if(Build.VERSION.SDK_INT<Build.VERSION_CODES.LOLLIPOP){
 			manageAttendance(att);
