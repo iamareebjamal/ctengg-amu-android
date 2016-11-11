@@ -25,3 +25,14 @@
 -keepattributes Signature
 # Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
+
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+
+-keep class amu.areeb.zhcet.model.** { *; }

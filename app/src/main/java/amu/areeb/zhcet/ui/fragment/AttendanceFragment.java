@@ -1,9 +1,11 @@
 package amu.areeb.zhcet.ui.fragment;
 
 import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.attendance.AttendanceAdapter;
-import amu.areeb.zhcet.attendance.AttendanceGetter;
+import amu.areeb.zhcet.adapter.AttendanceAdapter;
+import amu.areeb.zhcet.api.AttendanceAPI;
+import amu.areeb.zhcet.api.StudentService;
 import amu.areeb.zhcet.model.Attendance;
+import amu.areeb.zhcet.model.StudentAttendance;
 import amu.areeb.zhcet.ui.MainActivity;
 import amu.areeb.zhcet.utils.Random;
 import amu.areeb.zhcet.utils.ShareUtil;
@@ -38,28 +40,31 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttendanceFragment extends Fragment {
+public class AttendanceFragment extends Fragment implements Callback<StudentAttendance> {
 
-    private AttendanceGetter aGetter;
-    private Random rnd = new Random(Attendance.COLORS.length);
+    private Random rnd = new Random(Utils.COLORS.length);
     private ProgressDialog pd;
     private RecyclerView rv;
-    private List<Attendance> list;
     private AttendanceAdapter mAdapter;
+    private StudentAttendance studentAttendance;
+    private List<Attendance> attendanceList = new ArrayList<>();
     private LinearLayout emptyList;
-    private View v;
+    private View root;
 
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_attendance, container, false);
+        root = inflater.inflate(R.layout.fragment_attendance, container, false);
 
-        emptyList = (LinearLayout) v.findViewById(R.id.empty);
+        emptyList = (LinearLayout) root.findViewById(R.id.empty);
         ImageView bin = (ImageView) emptyList.findViewById(R.id.bin);
         GradientDrawable circle = new GradientDrawable();
         circle.setCornerRadius(bin.getHeight() + 500);
@@ -69,15 +74,15 @@ public class AttendanceFragment extends Fragment {
         else
             bin.setBackgroundDrawable(circle);
 
-        rv = (RecyclerView) v.findViewById(R.id.recycler);
+        rv = (RecyclerView) root.findViewById(R.id.recycler);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
         rv.setItemAnimator(new DefaultItemAnimator());
 
-        list = new ArrayList<>();
+        attendanceList = new ArrayList<>();
 
-        mAdapter = new AttendanceAdapter(getActivity(), list);
+        mAdapter = new AttendanceAdapter(getActivity(), attendanceList);
         rv.setAdapter(mAdapter);
         Snackbar.make(rv, "Click on + above to enter Faculty Number", Snackbar.LENGTH_LONG).show();
 
@@ -86,7 +91,7 @@ public class AttendanceFragment extends Fragment {
         pd.setCanceledOnTouchOutside(false);
         pd.setCancelable(false);
 
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) root.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -95,12 +100,12 @@ public class AttendanceFragment extends Fragment {
             }
         });
 
-        aGetter = Utils.load(getActivity());
-        if (aGetter != null)
-            manageAttendance(aGetter.getAttendance());
+        studentAttendance = Utils.load(getActivity());
+        if (studentAttendance != null)
+            manageAttendance(studentAttendance.attendance);
 
         setHasOptionsMenu(true);
-        return v;
+        return root;
     }
 
     @Override
@@ -114,9 +119,11 @@ public class AttendanceFragment extends Fragment {
 
             @Override
             public boolean onMenuItemClick(MenuItem p1) {
-                ShareUtil shareUtil = new ShareUtil(getContext(), rv);
-                shareUtil.setName(aGetter.getName());
-                shareUtil.openShareDialog(pd);
+                if(studentAttendance!=null) {
+                    ShareUtil shareUtil = new ShareUtil(getContext(), rv);
+                    shareUtil.setName(studentAttendance.name);
+                    shareUtil.openShareDialog(pd);
+                }
                 return false;
             }
         });
@@ -129,8 +136,8 @@ public class AttendanceFragment extends Fragment {
         til.addView(edt);
         til.setPadding(20, 60, 20, 20);
         edt.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(9)});
-        if (aGetter != null)
-            edt.setText(aGetter.getFacultyNumber());
+        if (studentAttendance != null)
+            edt.setText(studentAttendance.fac);
         AlertDialog.Builder alert = new AlertDialog.Builder(getActivity(), R.style.AppCompatAlertDialogStyle);
         alert.setView(til);
 
@@ -182,12 +189,11 @@ public class AttendanceFragment extends Fragment {
     }
 
     public void getAttendance(String fac_no) {
-        aGetter = new AttendanceGetter(fac_no);
         pd.show();
         ConnectivityManager conn = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo net = conn.getActiveNetworkInfo();
         if (net != null) {
-            new GetAttendance().execute(fac_no);
+            StudentService.getAttendanceCall(fac_no).enqueue(this);
         } else {
             pd.dismiss();
             Toast.makeText(getActivity(), "No Connection", Toast.LENGTH_SHORT).show();
@@ -200,19 +206,19 @@ public class AttendanceFragment extends Fragment {
             manageAttendance(att);
             return;
         }
-        int cx = v.getRight(), cy = v.getBottom();
-        final int to = Color.parseColor(Attendance.COLORS[rnd.getNext()]);
-        v.setBackgroundColor(to);
-        v.bringToFront();
-        float radius = (float) Math.hypot(v.getMeasuredHeight(), v.getMeasuredWidth());
-        Animator anim = ViewAnimationUtils.createCircularReveal(v, cx, cy, 0, radius);
+        int cx = root.getRight(), cy = root.getBottom();
+        final int to = Color.parseColor(Utils.COLORS[rnd.getNext()]);
+        root.setBackgroundColor(to);
+        root.bringToFront();
+        float radius = (float) Math.hypot(root.getMeasuredHeight(), root.getMeasuredWidth());
+        Animator anim = ViewAnimationUtils.createCircularReveal(root, cx, cy, 0, radius);
         anim.setDuration(700);
         anim.addListener(new Animator.AnimatorListener() {
 
             @Override
             public void onAnimationStart(Animator p1) {
                 emptyList.setVisibility(View.GONE);
-                list.clear();
+                attendanceList.clear();
                 mAdapter.notifyDataSetChanged();
                 mAdapter.resetAnimation();
             }
@@ -220,11 +226,11 @@ public class AttendanceFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator p1) {
                 for (Attendance a : att) {
-                    list.add(a);
-                    mAdapter.notifyItemInserted(list.size());
+                    attendanceList.add(a);
+                    mAdapter.notifyItemInserted(attendanceList.size());
                 }
 
-                ValueAnimator va = ObjectAnimator.ofInt(v, "backgroundColor", to, Color.parseColor("#eeeeee"));
+                ValueAnimator va = ObjectAnimator.ofInt(root, "backgroundColor", to, Color.parseColor("#eeeeee"));
                 va.setEvaluator(new ArgbEvaluator());
                 va.setRepeatCount(0);
                 va.setRepeatMode(ValueAnimator.REVERSE);
@@ -232,10 +238,10 @@ public class AttendanceFragment extends Fragment {
                 va.start();
 
                 try {
-                    Snackbar.make(rv, aGetter.getName(), Snackbar.LENGTH_SHORT).show();
-                    ((MainActivity) getActivity()).setUsername(aGetter.getName());
-                    ((MainActivity) getActivity()).setDetail(Utils.getDetail(aGetter.getFacultyNumber()));
-                    Utils.save(getContext(), aGetter);
+                    Snackbar.make(rv, studentAttendance.name, Snackbar.LENGTH_SHORT).show();
+                    ((MainActivity) getActivity()).setUsername(studentAttendance.name);
+                    ((MainActivity) getActivity()).setDetail(Utils.getDetail(studentAttendance.fac));
+                    Utils.save(getContext(), studentAttendance);
                 } catch (NullPointerException e) {
                 }
             }
@@ -254,41 +260,37 @@ public class AttendanceFragment extends Fragment {
 
     public void manageAttendance(List<Attendance> att) {
         emptyList.setVisibility(View.GONE);
-        list.clear();
+        attendanceList.clear();
         mAdapter.notifyDataSetChanged();
         mAdapter.resetAnimation();
         for (Attendance a : att) {
-            list.add(a);
-            mAdapter.notifyItemInserted(list.size());
+            attendanceList.add(a);
+            mAdapter.notifyItemInserted(attendanceList.size());
         }
 
         try {
-            Snackbar.make(rv, aGetter.getName(), Snackbar.LENGTH_SHORT).show();
-            ((MainActivity) getActivity()).setUsername(aGetter.getName());
-            ((MainActivity) getActivity()).setDetail(Utils.getDetail(aGetter.getFacultyNumber()));
-            Utils.save(getContext(), aGetter);
+            Snackbar.make(rv, studentAttendance.name, Snackbar.LENGTH_SHORT).show();
+            ((MainActivity) getActivity()).setUsername(studentAttendance.name);
+            ((MainActivity) getActivity()).setDetail(Utils.getDetail(studentAttendance.fac));
+            Utils.save(getContext(), studentAttendance);
         } catch (NullPointerException e) {
             Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    private class GetAttendance extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            return aGetter.getAttendanceResult();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            pd.dismiss();
-            if (s.contains("Success")) {
-                entry(aGetter.getAttendance());
-            } else
-                Toast.makeText(getActivity(), aGetter.getError(), Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onResponse(Call<StudentAttendance> call, Response<StudentAttendance> response) {
+        pd.dismiss();
+        studentAttendance = response.body();
+        if (!studentAttendance.error) {
+            entry(studentAttendance.attendance);
+        } else
+            Toast.makeText(getActivity(), studentAttendance.message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onFailure(Call<StudentAttendance> call, Throwable t) {
+        Toast.makeText(getActivity(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+    }
 }

@@ -1,6 +1,6 @@
 package amu.areeb.zhcet.utils;
 
-import amu.areeb.zhcet.attendance.AttendanceGetter;
+import amu.areeb.zhcet.model.StudentAttendance;
 import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -10,6 +10,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 public class Utils {
+
+    public static final String[] COLORS = {"#FF5252" /*Red*/, "#FF4081" /*Pink*/, "#e040fb" /*Purple*/,
+            "#00E5FF" /*Cyan*/,
+            "#1DE9B6" /*Teal*/, "#00c853" /*Light Green*/, "#F9A825" /*Yellow*/,
+            "#FF6E40" /*Deep Orange*/};
+
     public static boolean isFacultyNumber(String fcNo) {
         if (fcNo.length() == 9)
             return true;
@@ -77,25 +83,25 @@ public class Utils {
         return facNo + " " + year + post + " Year" + " " + stream;
     }
 
-    public static AttendanceGetter load(Context context) {
-        AttendanceGetter aGetter = null;
+    public static StudentAttendance load(Context context) {
+        StudentAttendance studentAttendance = null;
         try {
             FileInputStream fis = context.openFileInput("attendance.db");
             ObjectInputStream o = new ObjectInputStream(fis);
-            aGetter = (AttendanceGetter) o.readObject();
+            studentAttendance = (StudentAttendance) o.readObject();
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return aGetter;
+        return studentAttendance;
     }
 
-    public static void save(Context context, AttendanceGetter aGetter) {
+    public static void save(Context context, StudentAttendance studentAttendance) {
         try {
             FileOutputStream fos = context.openFileOutput("attendance.db", Context.MODE_PRIVATE);
             ObjectOutputStream o = new ObjectOutputStream(fos);
-            o.writeObject(aGetter);
+            o.writeObject(studentAttendance);
             fos.close();
         } catch (FileNotFoundException e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();

@@ -1,7 +1,8 @@
-package amu.areeb.zhcet.attendance;
+package amu.areeb.zhcet.adapter;
 
 import amu.areeb.zhcet.R;
 import amu.areeb.zhcet.model.Attendance;
+import amu.areeb.zhcet.utils.Utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -25,15 +26,15 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
 
     private List<Attendance> attendanceList;
     private Context context;
-    private ArrayList<String> colors = new ArrayList<String>(Attendance.COLORS.length);
+    private ArrayList<String> colors = new ArrayList<String>(Utils.COLORS.length);
     private int lastPosition = -1;
 
     public AttendanceAdapter(Context ctx, List<Attendance> list) {
         //lastPosition=-1;
         attendanceList = list;
         context = ctx;
-        for (int i = 0; i < Attendance.COLORS.length; i++) {
-            colors.add(Attendance.COLORS[i]);
+        for (int i = 0; i < Utils.COLORS.length; i++) {
+            colors.add(Utils.COLORS[i]);
         }
         Collections.shuffle(colors);
     }
@@ -49,13 +50,13 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
     @Override
     public void onBindViewHolder(AttendanceAdapter.AttendanceHolder ah, int i) {
         Attendance a = attendanceList.get(i);
-        ah.subject.setText(a.subject);
+        ah.subject.setText(a.course);
         ah.attended.setText("Attended : " + a.attended);
         ah.total.setText("Total : " + a.total);
-        ah.perc.setText(a.perc + "%");
-        if (Float.parseFloat(a.perc) < 75) {
+        ah.perc.setText(a.percentage + "%");
+        if (a.remark.length()>0) {
             ah.remark.setVisibility(View.VISIBLE);
-            ah.remark.setText("SHORT");
+            ah.remark.setText(a.remark);
             GradientDrawable shape = new GradientDrawable();
             shape.setColor(Color.parseColor("#44eeeeee"));
             shape.setCornerRadius(ah.remark.getWidth() + 100);
