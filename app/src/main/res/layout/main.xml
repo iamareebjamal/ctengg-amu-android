@@ -48,6 +48,7 @@
 		android:id="@+id/splash"
 		android:layout_height="match_parent"
 		android:layout_width="match_parent"
+		android:orientation="horizontal"
 		android:background="@color/purple" />
 	
 	<android.support.design.widget.NavigationView
