@@ -1,8 +1,10 @@
 package amu.areeb.zhcet.ui;
 
+import amu.areeb.zhcet.BuildConfig;
 import amu.areeb.zhcet.R;
 import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
 import amu.areeb.zhcet.ui.fragment.ResultFragment;
+import amu.areeb.zhcet.utils.Utils;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;

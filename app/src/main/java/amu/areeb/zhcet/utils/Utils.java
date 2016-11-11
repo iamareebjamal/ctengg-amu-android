@@ -4,12 +4,12 @@ import amu.areeb.zhcet.model.StudentAttendance;
 import amu.areeb.zhcet.model.StudentResult;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.widget.Toast;
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Objects;
 
 public class Utils {
 
@@ -127,5 +127,9 @@ public class Utils {
 
     public static void saveResult(Context context, StudentResult studentResult) {
         save(context, studentResult, "result.db");
+    }
+
+    public static String decrypt(String obs){
+        return new String( Base64.decode( obs, Base64.DEFAULT ) );
     }
 }

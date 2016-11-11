@@ -12,7 +12,7 @@ android {
         versionName "1.5"
 
         vectorDrawables.useSupportLibrary = true
-        buildConfigField 'String', "API_KEY", '"RqCWSXVu4SsaVsDngUoXkZszXgwCpbHJThO9rMbn"'
+        buildConfigField 'String', "API_KEY", '"UnFDV1NYVnU0U3NhVnNEbmdVb1hrWnN6WGd3Q3BiSEpUaE85ck1ibg=="'
     }
     buildTypes {
         release {
