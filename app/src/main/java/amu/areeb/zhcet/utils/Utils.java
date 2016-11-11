@@ -1,6 +1,7 @@
 package amu.areeb.zhcet.utils;
 
 import amu.areeb.zhcet.model.StudentAttendance;
+import amu.areeb.zhcet.model.StudentResult;
 import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Utils {
 
@@ -83,25 +85,24 @@ public class Utils {
         return facNo + " " + year + post + " Year" + " " + stream;
     }
 
-    public static StudentAttendance load(Context context) {
-        StudentAttendance studentAttendance = null;
+    private static Object load(Context context, String database){
+        Object object = null;
         try {
-            FileInputStream fis = context.openFileInput("attendance.db");
+            FileInputStream fis = context.openFileInput(database);
             ObjectInputStream o = new ObjectInputStream(fis);
-            studentAttendance = (StudentAttendance) o.readObject();
+            object =  o.readObject();
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return studentAttendance;
+        return object;
     }
 
-    public static void save(Context context, StudentAttendance studentAttendance) {
+    private static void save(Context context, Object object, String database){
         try {
-            FileOutputStream fos = context.openFileOutput("attendance.db", Context.MODE_PRIVATE);
+            FileOutputStream fos = context.openFileOutput(database, Context.MODE_PRIVATE);
             ObjectOutputStream o = new ObjectOutputStream(fos);
-            o.writeObject(studentAttendance);
+            o.writeObject(object);
             fos.close();
         } catch (FileNotFoundException e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
@@ -110,6 +111,21 @@ public class Utils {
         } catch (NullPointerException e) {
 
         }
+    }
 
+    public static StudentAttendance loadAttendance(Context context) {
+        return (StudentAttendance) load(context, "attendance.db");
+    }
+
+    public static StudentResult loadResult(Context context) {
+        return (StudentResult) load(context, "result.db");
+    }
+
+    public static void saveAttendance(Context context, StudentAttendance studentAttendance) {
+        save(context, studentAttendance, "attendance.db");
+    }
+
+    public static void saveResult(Context context, StudentResult studentResult) {
+        save(context, studentResult, "result.db");
     }
 }

@@ -26,10 +26,29 @@
 # Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
 
+-dontwarn com.squareup.okhttp.**
+-dontwarn org.codehaus.mojo.**
+-dontwarn okio.**
+
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+
+-keepattributes *Annotation*
+
+-keepattributes RuntimeVisibleAnnotations
+-keepattributes RuntimeInvisibleAnnotations
+-keepattributes RuntimeVisibleParameterAnnotations
+-keepattributes RuntimeInvisibleParameterAnnotations
+
+-keepattributes EnclosingMethod
+
+-keep public enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
--keepattributes Signature
--keepattributes Exceptions
 
 -keepclasseswithmembers class * {
     @retrofit2.http.* <methods>;

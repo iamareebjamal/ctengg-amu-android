@@ -2,6 +2,7 @@ package amu.areeb.zhcet.ui;
 
 import amu.areeb.zhcet.R;
 import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
+import amu.areeb.zhcet.ui.fragment.ResultFragment;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -34,9 +35,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String NAV_ITEM_ID = "selected";
-    int mNavItemId;
-    AttendanceFragment af;
+    private String NAV_ITEM_ID = "selected";
+    private int mNavItemId;
+    private AttendanceFragment af;
+    private ResultFragment rf;
     private DrawerLayout drawer;
     private NavigationView navView;
 
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
         splash(savedInstanceState);
         if (savedInstanceState == null) {
-            AttendanceFragment af = new AttendanceFragment();
+            af = new AttendanceFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, af);
             ft.commit();
@@ -199,6 +201,14 @@ public class MainActivity extends AppCompatActivity {
                         ft.commit();
                         mNavItemId = id;
                         getSupportActionBar().setTitle("Attendance");
+                        break;
+                    case R.id.nav_result:
+                        if (rf == null)
+                            rf = new ResultFragment();
+                        ft.replace(R.id.frame, rf);
+                        ft.commit();
+                        mNavItemId = id;
+                        getSupportActionBar().setTitle("Result");
                         break;
                     case R.id.nav_feedback:
                         final TextInputLayout til = new TextInputLayout(MainActivity.this);

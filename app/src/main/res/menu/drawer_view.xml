@@ -17,22 +17,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <!--  item
-		android:id="@+id/nav_home"
-		android:icon="@drawable/ic_dashboard"
-		android:title="Home" /-->
         <item
                 android:id="@+id/nav_attendance"
                 android:icon="@drawable/ic_event"
                 android:title="Attendance"/>
-        <!--item
-		android:id="@+id/nav_friends"
-		android:icon="@drawable/ic_headset"
-		android:title="Friends" />
         <item
-		android:id="@+id/nav_discussion"
-		android:icon="@drawable/ic_forum"
-		android:title="Discussion" /-->
+                android:id="@+id/nav_result"
+                android:icon="@drawable/ic_dashboard"
+                android:title="Result"/>
     </group>
 
     <item android:title="Developer">

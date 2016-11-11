@@ -34,12 +34,21 @@
                 android:layout_height="wrap_content">
 
             <TextView
-                    android:id="@+id/attended"
+                    android:id="@+id/sessional"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:text="Attended : "
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="Sessional : "
+                    android:textColor="#aa333333"
+                    android:textSize="14sp"/>
+
+            <TextView
+                    android:id="@+id/exam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Final : "
                     android:textColor="#aa333333"
                     android:textSize="14sp"/>
 
@@ -47,8 +56,8 @@
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:text="Total : "
                     android:textColor="#aa333333"
                     android:textSize="14sp"/>
@@ -60,44 +69,25 @@
                 android:paddingTop="2dp">
 
             <TextView
-                    android:id="@+id/perc"
+                    android:id="@+id/grace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="%"
-                    android:paddingTop="3dp"
-                    android:textColor="#aa333333"
-                    android:textSize="16sp"
-                    android:textStyle="italic|bold"/>
-
-            <TextView
-                    android:id="@+id/remark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:padding="5dp"
-                    android:text=" "
-                    android:textColor="#aa333333"
-                    android:textSize="14sp"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="2dp">
-
-            <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:text="31/12/2015"
+                    android:text="Grace : 0"
                     android:textColor="#aa444444"
                     android:textSize="12sp"
                     android:textStyle="italic"/>
+            <TextView
+                    android:id="@+id/grade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="A"
+                    android:textColor="#aa444444"
+                    android:textSize="12sp"
+                    android:textStyle="italic|bold"/>
 
         </RelativeLayout>
     </LinearLayout>
