@@ -9,6 +9,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
@@ -28,6 +29,7 @@ public class DetailActivity extends AppCompatActivity implements PopupMenu.OnMen
         // TODO: Implement this method
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
