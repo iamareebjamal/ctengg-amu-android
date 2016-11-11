@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<style name="AppTheme" parent="Base.Theme">
+	</style>
+	
+	<style name="AppTheme.Launcher" parent="Theme.AppCompat.Light" >
+		<item name="android:windowBackground">@color/purple</item>
+		<item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/purple_dark</item>
+	</style>
+	
+    <style name="Base.Theme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/purple_dark</item>
+        <item name="colorAccent">@color/pink</item>
+		<item name="colorControlHighlight">@color/pink_light</item>
+		<!--item name="actionModeStyle">@style/Widget.AppCompat.ActionMode.Light</item-->
+		<!--item name="actionModeBackground">@color/purple</item-->
+		<item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/window_background</item>
+	</style>
+	
+	<style name="Base.Theme.Nav" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/purple</item>
+    </style>
+	
+    
+	<style name="Base.Theme.Card" parent="Theme.AppCompat.NoActionBar">
+		<item name="colorPrimary">@color/purple</item>
+    </style>
+
+	<style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    	<item name="colorAccent">@color/purple</item>
+	</style>
+	
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style></resources>
