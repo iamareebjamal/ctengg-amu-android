@@ -116,7 +116,7 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //inflater.inflate(R.menu.attendance, menu);
         final MenuItem share = menu.add("Share");
-        share.setIcon(R.drawable.ic_share);
+        share.setIcon(R.drawable.vector_share);
         if (Build.VERSION.SDK_INT >= 11)
             share.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         share.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {

@@ -39,7 +39,7 @@ public class AppDetailActivity extends AppCompatActivity {
         ctl.setTitle("ctengg");
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setImageResource(R.drawable.ic_directions_white_48dp);
+        fab.setImageResource(R.drawable.vector_web);
         fab.setOnLongClickListener(new View.OnLongClickListener() {
 
             @Override

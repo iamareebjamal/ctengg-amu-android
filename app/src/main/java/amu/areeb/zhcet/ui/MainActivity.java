@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(tool);
 
         final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setHomeAsUpIndicator(R.drawable.vector_menu);
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setTitle("Home");
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -188,13 +188,6 @@ public class MainActivity extends AppCompatActivity {
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 switch (id) {
-                        /*case R.id.nav_home:
-                            HomeFragment hf = new HomeFragment();
-							ft.replace(R.id.frame, hf);
-							ft.commit();
-							mNavItemId = id;
-							getSupportActionBar().setTitle(menu.getTitle());
-							break;*/
                     case R.id.nav_attendance:
                         if (af == null)
                             af = new AttendanceFragment();
@@ -273,10 +266,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), AppDetailActivity.class));
                         menu.setChecked(false);
                         break;
-                    case R.id.nav_about:
+                    /*case R.id.nav_about:
                         startActivity(new Intent(getApplicationContext(), DetailActivity.class));
                         menu.setChecked(false);
-                        return true;
+                        return true;*/
                 }
                 drawer.closeDrawers();
                 return false;

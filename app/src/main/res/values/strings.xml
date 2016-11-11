@@ -23,7 +23,7 @@
     </string>
     <string name="app_library_detail">
         This app uses some open source free libraries licenced under Apache License, version 2.0, namely :\n\n
-        \u2022 jsoup \n
+        \u2022 Retrofit \n
         \u2022 Android Support v7 AppCompat \n
         \u2022 Android Support v7 CardView \n
         \u2022 Android Support v7 RecyclerView \n
@@ -32,7 +32,7 @@
         \u2022 Code resources from Chris Bane\'s demo CheeseSquare
     </string>
     <string name="app_credit_detail">
-        \u2022 This app is developed by Areeb Jamal, and Divy Prakash Varshney, two students of 2nd Year B.Tech, ZHCET,
+        \u2022 This app is developed by Areeb Jamal, and Divy Prakash Varshney, two students of then 2nd Year B.Tech, ZHCET,
         AMU \n
         \u2022 App fetches information from web server of ctengg.amu.ac.in \n
         \u2022 Any image/resource used in the app is provided free for use by Google under Material Design Program of

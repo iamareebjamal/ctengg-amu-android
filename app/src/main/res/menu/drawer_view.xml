@@ -19,11 +19,11 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/nav_attendance"
-                android:icon="@drawable/ic_event"
+                android:icon="@drawable/vector_calendar"
                 android:title="Attendance"/>
         <item
                 android:id="@+id/nav_result"
-                android:icon="@drawable/ic_dashboard"
+                android:icon="@drawable/vector_school"
                 android:title="Result"/>
     </group>
 
@@ -32,16 +32,16 @@
             <group android:checkableBehavior="none">
                 <item
                         android:id="@+id/nav_feedback"
-                        android:icon="@drawable/ic_forum"
+                        android:icon="@drawable/vector_forum"
                         android:title="Feedback"/>
                 <item
                         android:id="@+id/nav_app"
-                        android:icon="@drawable/ic_android_black_48dp"
+                        android:icon="@drawable/vector_app"
                         android:title="App"/>
-                <item
+                <!--item
                         android:id="@+id/nav_about"
-                        android:icon="@drawable/ic_group_black_48dp"
-                        android:title="About"/>
+                        android:icon="@drawable/vector_info"
+                        android:title="About"/-->
             </group>
         </menu>
     </item>
