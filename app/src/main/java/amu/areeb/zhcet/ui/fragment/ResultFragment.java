@@ -301,14 +301,12 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
         hidden.setVisibility(View.VISIBLE);
         resultList.clear();
 
-        TextView name, fac, enrolment, cpi, spi, credits;
-
-        name = (TextView) hidden.findViewById(R.id.name);
-        fac = (TextView) hidden.findViewById(R.id.fac);
-        enrolment = (TextView) hidden.findViewById(R.id.enrolment);
-        cpi = (TextView) hidden.findViewById(R.id.cpi);
-        spi = (TextView) hidden.findViewById(R.id.spi);
-        credits = (TextView) hidden.findViewById(R.id.credits);
+        TextView name = (TextView) hidden.findViewById(R.id.name);
+        TextView fac = (TextView) hidden.findViewById(R.id.fac);
+        TextView enrolment = (TextView) hidden.findViewById(R.id.enrolment);
+        TextView cpi = (TextView) hidden.findViewById(R.id.cpi);
+        TextView spi = (TextView) hidden.findViewById(R.id.spi);
+        TextView credits = (TextView) hidden.findViewById(R.id.credits);
 
         name.setText(studentResult.name);
         fac.setText(studentResult.faculty_number);

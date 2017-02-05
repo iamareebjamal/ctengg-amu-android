@@ -28,6 +28,16 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#99333333" />
 
+        <TextView
+            android:id="@+id/subjectName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Subject Name"
+            android:textStyle="bold"
+            android:textColor="#99333333"
+            android:gravity="center"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -85,6 +95,45 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:text="A"
+                android:textColor="#aa444444"
+                android:textSize="12sp"
+                android:textStyle="italic|bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/highest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Highest : 0"
+                android:textColor="#aa444444"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Class Average : "
+                android:textColor="#aa444444"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="Subject Rank : 1"
                 android:textColor="#aa444444"
                 android:textSize="12sp"
                 android:textStyle="italic|bold" />
