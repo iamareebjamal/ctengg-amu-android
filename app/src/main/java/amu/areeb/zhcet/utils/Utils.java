@@ -76,6 +76,8 @@ public class Utils {
                 break;
             case 4:
                 post = "th";
+                break;
+            default:
         }
 
         return facNo + " " + year + post + " Year" + " " + stream;
