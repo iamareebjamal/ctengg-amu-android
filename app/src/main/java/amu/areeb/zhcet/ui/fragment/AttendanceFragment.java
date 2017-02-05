@@ -210,7 +210,8 @@ public class AttendanceFragment extends Fragment implements Callback<StudentAtte
             manageAttendance(att);
             return;
         }
-        int cx = root.getRight(), cy = root.getBottom();
+        int cx = root.getRight();
+        int cy = root.getBottom();
         final int to = Color.parseColor(Utils.COLORS[rnd.getNext()]);
         root.setBackgroundColor(to);
         root.bringToFront();

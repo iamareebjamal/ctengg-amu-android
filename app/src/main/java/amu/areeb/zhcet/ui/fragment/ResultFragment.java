@@ -228,7 +228,8 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
             manageResult(results);
             return;
         }
-        int cx = root.getRight(), cy = root.getBottom();
+        int cx = root.getRight();
+        int cy = root.getBottom();
         final int to = Color.parseColor(Utils.COLORS[rnd.getNext()]);
         root.setBackgroundColor(to);
         root.bringToFront();
@@ -248,14 +249,13 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
 
             @Override
             public void onAnimationEnd(Animator p1) {
-                TextView name, fac, enrolment, cpi, spi, credits;
 
-                name = (TextView) hidden.findViewById(R.id.name);
-                fac = (TextView) hidden.findViewById(R.id.fac);
-                enrolment = (TextView) hidden.findViewById(R.id.enrolment);
-                cpi = (TextView) hidden.findViewById(R.id.cpi);
-                spi = (TextView) hidden.findViewById(R.id.spi);
-                credits = (TextView) hidden.findViewById(R.id.credits);
+                TextView name = (TextView) hidden.findViewById(R.id.name);
+                TextView fac = (TextView) hidden.findViewById(R.id.fac);
+                TextView enrolment = (TextView) hidden.findViewById(R.id.enrolment);
+                TextView cpi = (TextView) hidden.findViewById(R.id.cpi);
+                TextView spi = (TextView) hidden.findViewById(R.id.spi);
+                TextView credits = (TextView) hidden.findViewById(R.id.credits);
 
                 name.setText(studentResult.name);
                 fac.setText(studentResult.faculty_number);
