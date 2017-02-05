@@ -1,14 +1,7 @@
 package amu.areeb.zhcet.adapter;
 
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.model.Attendance;
-import amu.areeb.zhcet.model.Result;
-import amu.areeb.zhcet.utils.Utils;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +14,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.model.Result;
+import amu.areeb.zhcet.utils.Utils;
 
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHolder> {

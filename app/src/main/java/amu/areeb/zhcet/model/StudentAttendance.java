@@ -9,5 +9,6 @@ public class StudentAttendance implements Serializable {
     public Boolean error;
     public List<Attendance> attendance;
 
-    public StudentAttendance(){}
+    public StudentAttendance() {
+    }
 }

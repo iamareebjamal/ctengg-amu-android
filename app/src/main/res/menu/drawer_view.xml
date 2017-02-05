@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 ~ Copyright (C) 2015 The Android Open Source Project
 ~
 ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,26 +17,26 @@
 
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_attendance"
-                android:icon="@drawable/vector_calendar"
-                android:title="Attendance"/>
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/vector_calendar"
+            android:title="Attendance" />
         <item
-                android:id="@+id/nav_result"
-                android:icon="@drawable/vector_school"
-                android:title="Result"/>
+            android:id="@+id/nav_result"
+            android:icon="@drawable/vector_school"
+            android:title="Result" />
     </group>
 
     <item android:title="Developer">
         <menu>
             <group android:checkableBehavior="none">
                 <item
-                        android:id="@+id/nav_feedback"
-                        android:icon="@drawable/vector_forum"
-                        android:title="Feedback"/>
+                    android:id="@+id/nav_feedback"
+                    android:icon="@drawable/vector_forum"
+                    android:title="Feedback" />
                 <item
-                        android:id="@+id/nav_app"
-                        android:icon="@drawable/vector_app"
-                        android:title="App"/>
+                    android:id="@+id/nav_app"
+                    android:icon="@drawable/vector_app"
+                    android:title="App" />
                 <!--item
                         android:id="@+id/nav_about"
                         android:icon="@drawable/vector_info"

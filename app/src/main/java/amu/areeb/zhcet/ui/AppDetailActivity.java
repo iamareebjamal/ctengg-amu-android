@@ -1,6 +1,5 @@
 package amu.areeb.zhcet.ui;
 
-import amu.areeb.zhcet.R;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import amu.areeb.zhcet.R;
 
 
 public class AppDetailActivity extends AppCompatActivity {

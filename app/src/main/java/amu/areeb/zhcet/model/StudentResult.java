@@ -8,5 +8,6 @@ public class StudentResult implements Serializable {
     public List<Result> results;
     public Boolean error;
 
-    public StudentResult(){ }
+    public StudentResult() {
+    }
 }

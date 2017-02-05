@@ -1,17 +1,5 @@
 package amu.areeb.zhcet.ui.fragment;
 
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.adapter.AttendanceAdapter;
-import amu.areeb.zhcet.adapter.ResultAdapter;
-import amu.areeb.zhcet.api.StudentService;
-import amu.areeb.zhcet.model.Attendance;
-import amu.areeb.zhcet.model.Result;
-import amu.areeb.zhcet.model.StudentAttendance;
-import amu.areeb.zhcet.model.StudentResult;
-import amu.areeb.zhcet.ui.MainActivity;
-import amu.areeb.zhcet.utils.Random;
-import amu.areeb.zhcet.utils.ShareUtil;
-import amu.areeb.zhcet.utils.Utils;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -36,18 +24,34 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputFilter;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.adapter.ResultAdapter;
+import amu.areeb.zhcet.api.StudentService;
+import amu.areeb.zhcet.model.Result;
+import amu.areeb.zhcet.model.StudentResult;
+import amu.areeb.zhcet.ui.MainActivity;
+import amu.areeb.zhcet.utils.Random;
+import amu.areeb.zhcet.utils.ShareUtil;
+import amu.areeb.zhcet.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ResultFragment extends Fragment implements Callback<StudentResult> {
 
@@ -123,7 +127,7 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
 
             @Override
             public boolean onMenuItemClick(MenuItem p1) {
-                if(studentResult!=null) {
+                if (studentResult != null) {
                     ShareUtil shareUtil = new ShareUtil(getContext(), rv);
                     shareUtil.setName(studentResult.name);
                     shareUtil.openShareDialog(pd);
@@ -192,7 +196,7 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
                     fac_til.setError("Invalid Faculty Number");
                 }
 
-                if (!Utils.isEnrolmentNumber(en)){
+                if (!Utils.isEnrolmentNumber(en)) {
                     en_til.setError("Invalid Enrolment Number");
                 }
 
@@ -256,7 +260,7 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
                 name.setText(studentResult.name);
                 fac.setText(studentResult.faculty_number);
                 enrolment.setText(studentResult.enrolment);
-                cpi.setText("CPI : "+studentResult.cpi);
+                cpi.setText("CPI : " + studentResult.cpi);
                 spi.setText("SPI : " + studentResult.spi);
                 credits.setText("Credits : " + studentResult.ec);
 
@@ -277,7 +281,8 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
                     ((MainActivity) getActivity()).setUsername(studentResult.name);
                     ((MainActivity) getActivity()).setDetail(Utils.getDetail(studentResult.faculty_number));
                     Utils.saveResult(getContext(), studentResult);
-                } catch (NullPointerException e) {  }
+                } catch (NullPointerException e) {
+                }
             }
 
             @Override
@@ -309,7 +314,7 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
         name.setText(studentResult.name);
         fac.setText(studentResult.faculty_number);
         enrolment.setText(studentResult.enrolment);
-        cpi.setText("CPI : "+studentResult.cpi);
+        cpi.setText("CPI : " + studentResult.cpi);
         spi.setText("SPI : " + studentResult.spi);
         credits.setText("Credits : " + studentResult.ec);
 

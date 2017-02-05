@@ -1,15 +1,5 @@
 package amu.areeb.zhcet.ui.fragment;
 
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.adapter.AttendanceAdapter;
-import amu.areeb.zhcet.api.AttendanceAPI;
-import amu.areeb.zhcet.api.StudentService;
-import amu.areeb.zhcet.model.Attendance;
-import amu.areeb.zhcet.model.StudentAttendance;
-import amu.areeb.zhcet.ui.MainActivity;
-import amu.areeb.zhcet.utils.Random;
-import amu.areeb.zhcet.utils.ShareUtil;
-import amu.areeb.zhcet.utils.Utils;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -22,7 +12,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -35,17 +24,34 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputFilter;
-import android.view.*;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.adapter.AttendanceAdapter;
+import amu.areeb.zhcet.api.StudentService;
+import amu.areeb.zhcet.model.Attendance;
+import amu.areeb.zhcet.model.StudentAttendance;
+import amu.areeb.zhcet.ui.MainActivity;
+import amu.areeb.zhcet.utils.Random;
+import amu.areeb.zhcet.utils.ShareUtil;
+import amu.areeb.zhcet.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AttendanceFragment extends Fragment implements Callback<StudentAttendance> {
 
@@ -117,7 +123,7 @@ public class AttendanceFragment extends Fragment implements Callback<StudentAtte
 
             @Override
             public boolean onMenuItemClick(MenuItem p1) {
-                if(studentAttendance!=null) {
+                if (studentAttendance != null) {
                     ShareUtil shareUtil = new ShareUtil(getContext(), rv);
                     shareUtil.setName(studentAttendance.name);
                     shareUtil.openShareDialog(pd);

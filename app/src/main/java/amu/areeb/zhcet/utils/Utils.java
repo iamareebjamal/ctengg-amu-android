@@ -1,15 +1,21 @@
 package amu.areeb.zhcet.utils;
 
-import amu.areeb.zhcet.model.StudentAttendance;
-import amu.areeb.zhcet.model.StudentResult;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.widget.Toast;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.Calendar;
+
+import amu.areeb.zhcet.model.StudentAttendance;
+import amu.areeb.zhcet.model.StudentResult;
 
 public class Utils {
 
@@ -85,12 +91,12 @@ public class Utils {
         return facNo + " " + year + post + " Year" + " " + stream;
     }
 
-    private static Object load(Context context, String database){
+    private static Object load(Context context, String database) {
         Object object = null;
         try {
             FileInputStream fis = context.openFileInput(database);
             ObjectInputStream o = new ObjectInputStream(fis);
-            object =  o.readObject();
+            object = o.readObject();
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +104,7 @@ public class Utils {
         return object;
     }
 
-    private static void save(Context context, Object object, String database){
+    private static void save(Context context, Object object, String database) {
         try {
             FileOutputStream fos = context.openFileOutput(database, Context.MODE_PRIVATE);
             ObjectOutputStream o = new ObjectOutputStream(fos);
@@ -129,7 +135,7 @@ public class Utils {
         save(context, studentResult, "result.db");
     }
 
-    public static String decrypt(String obs){
-        return new String( Base64.decode( obs, Base64.DEFAULT ) );
+    public static String decrypt(String obs) {
+        return new String(Base64.decode(obs, Base64.DEFAULT));
     }
 }

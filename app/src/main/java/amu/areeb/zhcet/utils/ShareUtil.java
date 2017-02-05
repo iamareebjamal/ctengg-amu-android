@@ -1,7 +1,6 @@
 package amu.areeb.zhcet.utils;
 
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;

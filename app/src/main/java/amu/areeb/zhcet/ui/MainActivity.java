@@ -1,10 +1,5 @@
 package amu.areeb.zhcet.ui;
 
-import amu.areeb.zhcet.BuildConfig;
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
-import amu.areeb.zhcet.ui.fragment.ResultFragment;
-import amu.areeb.zhcet.utils.Utils;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -34,6 +29,10 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
+import amu.areeb.zhcet.ui.fragment.ResultFragment;
 
 
 public class MainActivity extends AppCompatActivity {
