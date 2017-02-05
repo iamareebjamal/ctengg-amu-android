@@ -36,8 +36,10 @@ public class DetailActivity extends AppCompatActivity implements PopupMenu.OnMen
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setHomeButtonEnabled(true);
+        if(ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setHomeButtonEnabled(true);
+        }
 
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         ctl.setTitle("Areeb Jamal");
@@ -89,6 +91,7 @@ public class DetailActivity extends AppCompatActivity implements PopupMenu.OnMen
             case android.R.id.home:
                 finish();
                 return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }
@@ -115,6 +118,7 @@ public class DetailActivity extends AppCompatActivity implements PopupMenu.OnMen
                 i.putExtra(Intent.EXTRA_SUBJECT, "ZHCET Feedback");
                 i.putExtra(Intent.EXTRA_TEXT, "Hello Areeb, I'd like to give some feedback regarding your app.");
                 break;
+            default:
         }
         startActivity(i);
         return super.onOptionsItemSelected(item);

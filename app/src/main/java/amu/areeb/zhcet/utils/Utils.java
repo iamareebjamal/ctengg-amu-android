@@ -6,9 +6,7 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
@@ -34,18 +32,14 @@ public class Utils {
         String fBranch = fcNo.substring(2, 5);
         String fRNo = fcNo.substring(5);
 
-        if (TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[ACEKLMP][EKR][B]$+") && Integer.parseInt(fYear) <= getSmallYear()) {
-            return true;
-        } else {
-            return false;
-        }
+        return TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[ACEKLMP][EKR][B]$+") && Integer.parseInt(fYear) <= getSmallYear();
     }
 
-    public static int getSmallYear() {
+    private static int getSmallYear() {
         return Integer.parseInt(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)).substring(2));
     }
 
-    public static int getMonth() {
+    private static int getMonth() {
         return Calendar.getInstance().get(Calendar.MONTH);
     }
 
@@ -56,11 +50,7 @@ public class Utils {
         String rgNo = enNo.substring(0, 2);
         String RNo = enNo.substring(2);
 
-        if (TextUtils.isDigitsOnly(RNo) && rgNo.matches("^[FG][B-Z]$+")) {
-            return true;
-        } else {
-            return false;
-        }
+        return  (TextUtils.isDigitsOnly(RNo) && rgNo.matches("^[FG][B-Z]$+"));
     }
 
     public static String getDetail(String facNo) {
@@ -110,12 +100,8 @@ public class Utils {
             ObjectOutputStream o = new ObjectOutputStream(fos);
             o.writeObject(object);
             fos.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        } catch (NullPointerException e) {
-
         }
     }
 

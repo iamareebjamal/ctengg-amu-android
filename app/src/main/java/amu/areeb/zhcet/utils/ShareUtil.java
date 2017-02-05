@@ -33,7 +33,7 @@ public class ShareUtil {
         this.name = name;
     }
 
-    public void sendBitmap(Bitmap b) {
+    private void sendBitmap(Bitmap b) {
         try {
             File cachePath = new File(context.getCacheDir(), "images");
             cachePath.mkdirs();
@@ -48,7 +48,7 @@ public class ShareUtil {
         }
     }
 
-    public void createChooser() {
+    private void createChooser() {
         File imagePath = new File(context.getCacheDir(), "images");
         File newFile = new File(imagePath, "image.png");
         Uri contentUri = FileProvider.getUriForFile(context, "amu.areeb.zhcet.fileprovider", newFile);
@@ -64,7 +64,7 @@ public class ShareUtil {
 
     }
 
-    public Bitmap getRecyclerViewScreenshot(RecyclerView view) {
+    private Bitmap getRecyclerViewScreenshot(RecyclerView view) {
         int size = view.getAdapter().getItemCount();
         RecyclerView.ViewHolder holder = view.getAdapter().createViewHolder(view, 0);
         view.getAdapter().onBindViewHolder(holder, 0);

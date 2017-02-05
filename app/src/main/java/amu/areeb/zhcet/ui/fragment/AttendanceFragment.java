@@ -246,8 +246,7 @@ public class AttendanceFragment extends Fragment implements Callback<StudentAtte
                     ((MainActivity) getActivity()).setUsername(studentAttendance.name);
                     ((MainActivity) getActivity()).setDetail(Utils.getDetail(studentAttendance.fac));
                     Utils.saveAttendance(getContext(), studentAttendance);
-                } catch (NullPointerException e) {
-                }
+                } catch (NullPointerException e) { }
             }
 
             @Override

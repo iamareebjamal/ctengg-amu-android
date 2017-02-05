@@ -281,8 +281,7 @@ public class ResultFragment extends Fragment implements Callback<StudentResult> 
                     ((MainActivity) getActivity()).setUsername(studentResult.name);
                     ((MainActivity) getActivity()).setDetail(Utils.getDetail(studentResult.faculty_number));
                     Utils.saveResult(getContext(), studentResult);
-                } catch (NullPointerException e) {
-                }
+                } catch (NullPointerException e) { }
             }
 
             @Override

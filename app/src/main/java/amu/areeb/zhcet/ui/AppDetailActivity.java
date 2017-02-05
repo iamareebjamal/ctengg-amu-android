@@ -33,8 +33,10 @@ public class AppDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setHomeButtonEnabled(true);
+        if(ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setHomeButtonEnabled(true);
+        }
 
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         ctl.setTitle("ctengg");
@@ -88,6 +90,7 @@ public class AppDetailActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }
