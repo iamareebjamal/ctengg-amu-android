@@ -1,5 +1,6 @@
-# Unofficial ctengg AMU Android App
-[![Codacy grade](https://img.shields.io/codacy/grade/f275bfa07386488b8e172a1303c5d514.svg)]()
+# Unofficial ctengg AMU Android App  
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f275bfa07386488b8e172a1303c5d514)](https://www.codacy.com/app/iamareebjamal/ctengg-amu-android?utm_source=github.com&utm_medium=referral&utm_content=iamareebjamal/ctengg-amu-android&utm_campaign=badger)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)  
 > Android client for College Attendance and Result Website
 
