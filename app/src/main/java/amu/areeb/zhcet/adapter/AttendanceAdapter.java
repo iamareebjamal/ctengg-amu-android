@@ -1,8 +1,5 @@
 package amu.areeb.zhcet.adapter;
 
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.model.Attendance;
-import amu.areeb.zhcet.utils.Utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -20,6 +17,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.model.Attendance;
+import amu.areeb.zhcet.utils.Utils;
 
 
 public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.AttendanceHolder> {
@@ -54,7 +55,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
         ah.attended.setText("Attended : " + a.attended);
         ah.total.setText("Total : " + a.total);
         ah.perc.setText(a.percentage + "%");
-        if (a.remark.length()>0) {
+        if (a.remark.length() > 0) {
             ah.remark.setVisibility(View.VISIBLE);
             ah.remark.setText(a.remark);
             GradientDrawable shape = new GradientDrawable();

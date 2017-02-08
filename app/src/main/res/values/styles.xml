@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Base.Theme">
-    </style>
+    <style name="AppTheme" parent="Base.Theme"></style>
 
     <style name="AppTheme.Launcher" parent="Theme.AppCompat.Light">
         <item name="android:windowBackground">@color/purple</item>

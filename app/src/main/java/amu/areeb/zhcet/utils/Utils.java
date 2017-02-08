@@ -1,15 +1,19 @@
 package amu.areeb.zhcet.utils;
 
-import amu.areeb.zhcet.model.StudentAttendance;
-import amu.areeb.zhcet.model.StudentResult;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.widget.Toast;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.Calendar;
+
+import amu.areeb.zhcet.model.StudentAttendance;
+import amu.areeb.zhcet.model.StudentResult;
 
 public class Utils {
 
@@ -28,18 +32,14 @@ public class Utils {
         String fBranch = fcNo.substring(2, 5);
         String fRNo = fcNo.substring(5);
 
-        if (TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[ACEKLMP][EKR][B]$+") && Integer.parseInt(fYear) <= getSmallYear()) {
-            return true;
-        } else {
-            return false;
-        }
+        return TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[ACEKLMP][EKR][B]$+") && Integer.parseInt(fYear) <= getSmallYear();
     }
 
-    public static int getSmallYear() {
+    private static int getSmallYear() {
         return Integer.parseInt(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)).substring(2));
     }
 
-    public static int getMonth() {
+    private static int getMonth() {
         return Calendar.getInstance().get(Calendar.MONTH);
     }
 
@@ -50,11 +50,7 @@ public class Utils {
         String rgNo = enNo.substring(0, 2);
         String RNo = enNo.substring(2);
 
-        if (TextUtils.isDigitsOnly(RNo) && rgNo.matches("^[FG][B-Z]$+")) {
-            return true;
-        } else {
-            return false;
-        }
+        return  (TextUtils.isDigitsOnly(RNo) && rgNo.matches("^[FG][B-Z]$+"));
     }
 
     public static String getDetail(String facNo) {
@@ -80,17 +76,19 @@ public class Utils {
                 break;
             case 4:
                 post = "th";
+                break;
+            default:
         }
 
         return facNo + " " + year + post + " Year" + " " + stream;
     }
 
-    private static Object load(Context context, String database){
+    private static Object load(Context context, String database) {
         Object object = null;
         try {
             FileInputStream fis = context.openFileInput(database);
             ObjectInputStream o = new ObjectInputStream(fis);
-            object =  o.readObject();
+            object = o.readObject();
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,18 +96,14 @@ public class Utils {
         return object;
     }
 
-    private static void save(Context context, Object object, String database){
+    private static void save(Context context, Object object, String database) {
         try {
             FileOutputStream fos = context.openFileOutput(database, Context.MODE_PRIVATE);
             ObjectOutputStream o = new ObjectOutputStream(fos);
             o.writeObject(object);
             fos.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        } catch (NullPointerException e) {
-
         }
     }
 
@@ -129,7 +123,7 @@ public class Utils {
         save(context, studentResult, "result.db");
     }
 
-    public static String decrypt(String obs){
-        return new String( Base64.decode( obs, Base64.DEFAULT ) );
+    public static String decrypt(String obs) {
+        return new String(Base64.decode(obs, Base64.DEFAULT));
     }
 }

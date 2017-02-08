@@ -14,11 +14,11 @@ public class StudentService {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    public static Call<StudentAttendance> getAttendanceCall(String fac_no){
+    public static Call<StudentAttendance> getAttendanceCall(String fac_no) {
         return retrofit.create(AttendanceAPI.class).loadAttendance(fac_no, Utils.decrypt(BuildConfig.API_KEY));
     }
 
-    public static Call<StudentResult> getResultCall(String fac_no, String en_no){
+    public static Call<StudentResult> getResultCall(String fac_no, String en_no) {
         return retrofit.create(ResultAPI.class).loadResult(fac_no, en_no, Utils.decrypt(BuildConfig.API_KEY));
     }
 }

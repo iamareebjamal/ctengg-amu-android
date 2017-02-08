@@ -1,14 +1,7 @@
 package amu.areeb.zhcet.adapter;
 
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.model.Attendance;
-import amu.areeb.zhcet.model.Result;
-import amu.areeb.zhcet.utils.Utils;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,24 +12,26 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.model.Result;
+import amu.areeb.zhcet.utils.Utils;
 
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHolder> {
 
     private List<Result> resultList;
     private Context context;
-    private ArrayList<String> colors = new ArrayList<String>(Utils.COLORS.length);
+    private List<String> colors = Arrays.asList(Utils.COLORS);
     private int lastPosition = -1;
 
     public ResultAdapter(Context ctx, List<Result> list) {
         //lastPosition=-1;
         resultList = list;
         context = ctx;
-        for (int i = 0; i < Utils.COLORS.length; i++) {
-            colors.add(Utils.COLORS[i]);
-        }
         Collections.shuffle(colors);
     }
 
@@ -56,6 +51,11 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHold
         rh.total.setText("Total : " + r.total);
         rh.grace.setText("Grace : " + r.grace);
         rh.grade.setText(r.grades);
+
+        rh.average.setText("Average : " + r.class_average);
+        rh.rank.setText("Rank : " + r.subject_rank);
+        rh.highest.setText("Highest : " + r.highest);
+        rh.course_name.setText(r.course_name);
         rh.card.setCardBackgroundColor(Color.parseColor(colors.get(i)));
         setAnimation(rh.card, i);
     }
@@ -76,7 +76,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHold
 
     @Override
     public void onViewDetachedFromWindow(ResultAdapter.ResultHolder holder) {
-        // TODO: Implement this method
         holder.card.clearAnimation();
         //lastPosition=-1;
         super.onViewDetachedFromWindow(holder);
@@ -84,18 +83,18 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHold
 
     @Override
     public int getItemCount() {
-        // TODO: Implement this method
         return resultList.size();
     }
 
     @Override
     public long getItemId(final int position) {
-        return getItemId(position);
+        return resultList.get(position).hashCode();
     }
 
-    public class ResultHolder extends RecyclerView.ViewHolder {
-        protected TextView subject, sessional, exam, total, grace, grade;
-        protected CardView card;
+    class ResultHolder extends RecyclerView.ViewHolder {
+        TextView subject, sessional, exam, total, grace, grade;
+        TextView course_name, highest, average, rank;
+        CardView card;
 
         public ResultHolder(View v) {
             super(v);
@@ -105,6 +104,10 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHold
             total = (TextView) v.findViewById(R.id.total);
             grace = (TextView) v.findViewById(R.id.grace);
             grade = (TextView) v.findViewById(R.id.grade);
+            course_name = (TextView) v.findViewById(R.id.subjectName);
+            highest = (TextView) v.findViewById(R.id.highest);
+            average = (TextView) v.findViewById(R.id.average);
+            rank = (TextView) v.findViewById(R.id.rank);
             card = (CardView) v;
         }
     }

@@ -1,10 +1,5 @@
 package amu.areeb.zhcet.ui;
 
-import amu.areeb.zhcet.BuildConfig;
-import amu.areeb.zhcet.R;
-import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
-import amu.areeb.zhcet.ui.fragment.ResultFragment;
-import amu.areeb.zhcet.utils.Utils;
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -35,6 +30,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import amu.areeb.zhcet.R;
+import amu.areeb.zhcet.ui.fragment.AttendanceFragment;
+import amu.areeb.zhcet.ui.fragment.ResultFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private ResultFragment rf;
     private DrawerLayout drawer;
     private NavigationView navView;
+    
+    private ActionBar actionBar;
 
     @SuppressLint("NewApi")
     @Override
@@ -56,32 +57,40 @@ public class MainActivity extends AppCompatActivity {
         Toolbar tool = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tool);
 
-        final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.vector_menu);
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setTitle("Home");
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.vector_menu);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("Home");
+        }
+        
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navView = (NavigationView) findViewById(R.id.nav_view);
         if (navView != null) {
             setupNavigation(navView);
         }
-        splash(savedInstanceState);
+        splash();
         if (savedInstanceState == null) {
             af = new AttendanceFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, af);
             ft.commit();
             navView.getMenu().getItem(0).setChecked(true);
-            getSupportActionBar().setTitle(navView.getMenu().getItem(0).getTitle());
+            setActionBarTitle(navView.getMenu().getItem(0).getTitle());
         } else {
             mNavItemId = savedInstanceState.getInt(NAV_ITEM_ID);
             MenuItem m = navView.getMenu().findItem(mNavItemId);
             m.setChecked(true);
-            getSupportActionBar().setTitle(m.getTitle());
+            setActionBarTitle(m.getTitle());
         }
     }
+    
+    private void setActionBarTitle(CharSequence title){
+        if(actionBar != null)
+            actionBar.setTitle(title);
+    }
 
-    private void splash(final Bundle savedInstanceState) {
+    private void splash() {
 
         final LinearLayout splash = (LinearLayout) findViewById(R.id.splash);
 
@@ -178,14 +187,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupNavigation(NavigationView navView) {
-        // TODO: Implement this method
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(MenuItem menu) {
-                // TODO: Implement this method
                 menu.setChecked(true);
-                //Toast.makeText(getApplicationContext(), menu.getTitle(), Toast.LENGTH_SHORT).show();
                 int id = menu.getItemId();
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -196,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                         ft.replace(R.id.frame, af);
                         ft.commit();
                         mNavItemId = id;
-                        getSupportActionBar().setTitle("Attendance");
+                        setActionBarTitle("Attendance");
                         break;
                     case R.id.nav_result:
                         if (rf == null)
@@ -204,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                         ft.replace(R.id.frame, rf);
                         ft.commit();
                         mNavItemId = id;
-                        getSupportActionBar().setTitle("Result");
+                        setActionBarTitle("Result");
                         break;
                     case R.id.nav_feedback:
                         final TextInputLayout til = new TextInputLayout(MainActivity.this);
@@ -244,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(View p1) {
                                 // TODO: Implement this method
                                 String feed = edt.getText().toString();
-                                if (feed == null || feed.length() < 10) {
+                                if (feed.length() < 10) {
                                     til.setError("Write at least 10 letters");
                                 } else {
                                     Intent mailIntent = new Intent(Intent.ACTION_SEND);
@@ -272,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), DetailActivity.class));
                         menu.setChecked(false);
                         return true;*/
+                    default:
                 }
                 drawer.closeDrawers();
                 return false;
@@ -287,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 drawer.openDrawer(GravityCompat.START);
                 return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }
