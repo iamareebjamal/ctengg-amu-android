@@ -23,9 +23,9 @@ public class Utils {
             "#FF6E40" /*Deep Orange*/};
 
     public static boolean isFacultyNumber(String fcNo) {
-        if (fcNo.length() == 9)
+        if (fcNo.length() == 8)
             return true;
-        else if (fcNo.length() != 8)
+        else if (fcNo.length() != 9)
             return false;
 
         String fYear = fcNo.substring(0, 2);
