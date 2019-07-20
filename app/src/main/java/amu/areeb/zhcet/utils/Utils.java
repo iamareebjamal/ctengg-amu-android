@@ -32,7 +32,7 @@ public class Utils {
         String fBranch = fcNo.substring(2, 5);
         String fRNo = fcNo.substring(5);
 
-        return TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[ACEKLMP][EKR][B]$+") && Integer.parseInt(fYear) <= getSmallYear();
+        return TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[CEMP][ELKH][B]$+") && Integer.parseInt(fYear) <= getSmallYear();
     }
 
     private static int getSmallYear() {
