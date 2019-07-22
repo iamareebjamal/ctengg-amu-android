@@ -7,8 +7,8 @@ android {
         applicationId "amu.areeb.zhcet"
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 5
-        versionName "1.6"
+        versionCode 6
+        versionName "1.7.0"
 
         vectorDrawables.useSupportLibrary = true
         buildConfigField 'String', "API_KEY", '"UnFDV1NYVnU0U3NhVnNEbmdVb1hrWnN6WGd3Q3BiSEpUaE85ck1ibg=="'
