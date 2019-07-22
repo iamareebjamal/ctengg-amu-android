@@ -180,14 +180,10 @@ public class AttendanceFragment extends Fragment implements Callback<StudentAtte
             @Override
             public void onClick(View p1) {
                 String feed = edt.getText().toString().trim();
-                if (!Utils.isFacultyNumber(feed)) {
-                    til.setError("Invalid Faculty Number");
-                } else {
-                    getAttendance(feed);
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(p1.getWindowToken(), 0);
-                    dialog.dismiss();
-                }
+                getAttendance(feed);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(p1.getWindowToken(), 0);
+                dialog.dismiss();
             }
         });
     }
