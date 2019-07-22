@@ -14,4 +14,4 @@
 
 ### Author
 Areeb Jamal [@iamareebjamal](https://github.com/iamareebjamal)  
-Divya Prakash Varshney [@divs4debu](https://github.com/divs4debu)
+Haider Ali [@Haider8](https://github.com/Haider8)
