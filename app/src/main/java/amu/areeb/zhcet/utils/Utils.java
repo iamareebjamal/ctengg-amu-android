@@ -23,16 +23,16 @@ public class Utils {
             "#FF6E40" /*Deep Orange*/};
 
     public static boolean isFacultyNumber(String fcNo) {
-        if (fcNo.length() == 9)
+        if (fcNo.length() == 8)
             return true;
-        else if (fcNo.length() != 8)
+        else if (fcNo.length() != 9)
             return false;
 
         String fYear = fcNo.substring(0, 2);
         String fBranch = fcNo.substring(2, 5);
         String fRNo = fcNo.substring(5);
 
-        return TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[ACEKLMP][EKR][B]$+") && Integer.parseInt(fYear) <= getSmallYear();
+        return TextUtils.isDigitsOnly(fYear) && TextUtils.isDigitsOnly(fRNo) && fBranch.matches("^[CEMP][ELKH][B]$+") && Integer.parseInt(fYear) <= getSmallYear();
     }
 
     private static int getSmallYear() {
