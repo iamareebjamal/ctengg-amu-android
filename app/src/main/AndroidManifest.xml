@@ -32,7 +32,7 @@
 
         </activity>
         <provider
-                android:name="android.support.v4.content.FileProvider"
+                android:name="androidx.core.content.FileProvider"
                 android:authorities="amu.areeb.zhcet.fileprovider"
                 android:grantUriPermissions="true"
                 android:exported="false">
